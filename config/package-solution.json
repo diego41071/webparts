@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "pruebasharepoint-client-side-solution",
+    "id": "db9a664a-7cbe-44ce-a5c8-a7f5891046c2",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/pruebasharepoint.sppkg"
+  }
+}
