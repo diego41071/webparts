@@ -9,10 +9,28 @@
           "manifest": "./src/webparts/helloWorld/HelloWorldWebPart.manifest.json"
         }
       ]
+    },
+    "webpart-2-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/webpart2/Webpart2WebPart.js",
+          "manifest": "./src/webparts/webpart2/Webpart2WebPart.manifest.json"
+        }
+      ]
+    },
+    "busqueda-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/busqueda/BusquedaWebPart.js",
+          "manifest": "./src/webparts/busqueda/BusquedaWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js"
+    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
+    "Webpart2WebPartStrings": "lib/webparts/webpart2/loc/{locale}.js",
+    "BusquedaWebPartStrings": "lib/webparts/busqueda/loc/{locale}.js"
   }
 }

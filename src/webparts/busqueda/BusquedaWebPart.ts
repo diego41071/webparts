@@ -6,45 +6,33 @@ import {
 } from "@microsoft/sp-webpart-base";
 import { escape } from "@microsoft/sp-lodash-subset";
 
-import styles from "./HelloWorldWebPart.module.scss";
-import * as strings from "HelloWorldWebPartStrings";
+import styles from "./BusquedaWebPart.module.scss";
+import * as strings from "BusquedaWebPartStrings";
 
-export interface IHelloWorldWebPartProps {
+export interface IBusquedaWebPartProps {
   description: string;
 }
 
-export default class HelloWorldWebPart extends BaseClientSideWebPart<
-  IHelloWorldWebPartProps
+export default class BusquedaWebPart extends BaseClientSideWebPart<
+  IBusquedaWebPartProps
 > {
   public render(): void {
     this.domElement.innerHTML = `
-      <div class="${styles.helloWorld}">
+      <div class="${styles.busqueda}">
         <div class="${styles.container}">
           <div class="${styles.row}">
             <div class="${styles.column}">
-              <span class="${styles.title}">Catálogo de servicios</span>
-              <p class="${styles.subTitle}">Area</p>
+              <span class="${styles.title}">Catálogo de servicios</span></br>
+              <input type="text"></input>
+              <button>Buscar</button>
               <p class="${styles.subTitle}">Proceso</p>              
               <p class="${styles.subTitle}">Título</p>              
               <p class="${styles.subTitle}">Descripción</p>
               <p class="${styles.subTitle}">Imagen</p>
-              <p class="${styles.subTitle}">Url</p>
-              <p class="${styles.description}">${escape(
-      this.properties.description
-    )}</p>
-              <a href="#" class="${styles.button}">
-                <span class="${styles.label}">Leer más</span>
-              </a>
             </div>
           </div>
         </div>
       </div>`;
-    this.domElement
-      .getElementsByClassName(`${styles.button}`)[0]
-      .addEventListener("click", (event: any) => {
-        event.preventDefault();
-        alert("bienvenidos");
-      });
   }
 
   protected get dataVersion(): Version {
