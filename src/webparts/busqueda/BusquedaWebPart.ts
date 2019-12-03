@@ -11,7 +11,7 @@ import * as strings from "BusquedaWebPartStrings";
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 import { IListItem } from "./IListItem";
 export interface IBusquedaWebPartProps {
-  listName: string;
+  description: string;
 }
 
 export default class BusquedaWebPart extends BaseClientSideWebPart<
@@ -26,7 +26,7 @@ export default class BusquedaWebPart extends BaseClientSideWebPart<
               <span class="${styles.title}">Catálogo de servicios</span></br>
               <p class="${styles.subTitle}">Imagen</p>
               <p class="${styles.description}">${escape(
-      this.properties.listName
+      this.properties.description
     )}</p>
     <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${
       styles.row
@@ -104,7 +104,7 @@ export default class BusquedaWebPart extends BaseClientSideWebPart<
       ): void => {
         this.context.spHttpClient
           .get(
-            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items?$orderby=Id desc&$top=1&$select=id`,
+            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.description}')/items?$orderby=Id desc&$top=1&$select=id`,
             SPHttpClient.configurations.v1,
             {
               headers: {
@@ -141,7 +141,7 @@ export default class BusquedaWebPart extends BaseClientSideWebPart<
 
     this.context.spHttpClient
       .post(
-        `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items`,
+        `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.description}')/items`,
         SPHttpClient.configurations.v1,
         {
           headers: {
@@ -180,7 +180,7 @@ export default class BusquedaWebPart extends BaseClientSideWebPart<
           this.updateStatus(`Loading information about item ID: ${itemId}...`);
 
           return this.context.spHttpClient.get(
-            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${itemId})?$select=Title,Id`,
+            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.description}')/items(${itemId})?$select=Title,Id`,
             SPHttpClient.configurations.v1,
             {
               headers: {
@@ -221,7 +221,7 @@ export default class BusquedaWebPart extends BaseClientSideWebPart<
           this.updateStatus(`Loading information about item ID: ${itemId}...`);
 
           return this.context.spHttpClient.get(
-            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${latestItemId})?$select=Title,Id`,
+            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.description}')/items(${latestItemId})?$select=Title,Id`,
             SPHttpClient.configurations.v1,
             {
               headers: {
@@ -246,7 +246,7 @@ export default class BusquedaWebPart extends BaseClientSideWebPart<
 
         this.context.spHttpClient
           .post(
-            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${item.Id})`,
+            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.description}')/items(${item.Id})`,
             SPHttpClient.configurations.v1,
             {
               headers: {
@@ -292,7 +292,7 @@ export default class BusquedaWebPart extends BaseClientSideWebPart<
             `Loading information about item ID: ${latestItemId}...`
           );
           return this.context.spHttpClient.get(
-            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${latestItemId})?$select=Id`,
+            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.description}')/items(${latestItemId})?$select=Id`,
             SPHttpClient.configurations.v1,
             {
               headers: {
@@ -313,7 +313,7 @@ export default class BusquedaWebPart extends BaseClientSideWebPart<
         (item: IListItem): Promise<SPHttpClientResponse> => {
           this.updateStatus(`Deleting item with ID: ${latestItemId}...`);
           return this.context.spHttpClient.post(
-            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${item.Id})`,
+            `${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.description}')/items(${item.Id})`,
             SPHttpClient.configurations.v1,
             {
               headers: {
