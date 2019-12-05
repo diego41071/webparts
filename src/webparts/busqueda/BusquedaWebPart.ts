@@ -5,6 +5,7 @@ import {
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
 import { escape } from "@microsoft/sp-lodash-subset";
+import { sp } from "@pnp/sp";
 
 import styles from "./BusquedaWebPart.module.scss";
 import * as strings from "BusquedaWebPartStrings";

@@ -22,7 +22,9 @@
     "@pnp/odata": "^1.3.7",
     "@pnp/sp": "^1.3.7",
     "@types/es6-promise": "0.0.33",
-    "@types/webpack-env": "1.13.1"
+    "@types/webpack-env": "1.13.1",
+    "@types/knockout": "3.4.39",
+    "knockout": "3.4.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.9.1",

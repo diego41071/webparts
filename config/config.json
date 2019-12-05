@@ -25,12 +25,21 @@
           "manifest": "./src/webparts/busqueda/BusquedaWebPart.manifest.json"
         }
       ]
+    },
+    "spfx-pnp-js-example-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spfxPnpJsExample/SpfxPnpJsExampleWebPart.js",
+          "manifest": "./src/webparts/spfxPnpJsExample/SpfxPnpJsExampleWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
     "Webpart2WebPartStrings": "lib/webparts/webpart2/loc/{locale}.js",
-    "BusquedaWebPartStrings": "lib/webparts/busqueda/loc/{locale}.js"
+    "BusquedaWebPartStrings": "lib/webparts/busqueda/loc/{locale}.js",
+    "SpfxPnpJsExampleWebPartStrings": "lib/webparts/spfxPnpJsExample/loc/{locale}.js"
   }
 }
