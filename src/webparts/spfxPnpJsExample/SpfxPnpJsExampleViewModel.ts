@@ -64,7 +64,7 @@ export default class PnPjsExampleViewModel {
     return this.ensureList().then(list => {
       // here we are using the getAs operator so that our returned value will be typed
       return list.items
-        .select("Id", "Title", "OrderNumber")
+        .select("Descripcion")
         .get<OrderListItem[]>();
     });
   }
@@ -78,9 +78,8 @@ export default class PnPjsExampleViewModel {
         // add the new item to the SharePoint list
         list.items
           .add({
-            Title: this.newItemTitle(),
-            OrderNumber: this.newItemNumber()
-          })
+            Descripcion: this.newItemTitle()
+                    })
           .then((iar: ItemAddResult) => {
             // add the new item to the display
             this.items.push({
@@ -124,12 +123,12 @@ export default class PnPjsExampleViewModel {
     return new Promise<List>((resolve, reject) => {
       // use lists.ensure to always have the list available
       sp.web.lists
-        .ensure("SPPnPJSExampleList")
+        .ensure("PruebasCatalogo")
         .then((ler: ListEnsureResult) => {
           if (ler.created) {
             // we created the list on this call so let's add a column
             ler.list.fields
-              .addText("OrderNumber")
+              .addText("Descripcion")
               .then(_ => {
                 // and we will also add a few items so we can see some example data
                 // here we use batching
@@ -142,8 +141,8 @@ export default class PnPjsExampleViewModel {
                   .then(typeName => {
                     ler.list.items.inBatch(batch).add(
                       {
-                        Title: "Title 1",
-                        OrderNumber: "4826492"
+                        
+                        Descripcion: "4826492"
                       },
                       typeName
                     );
@@ -151,7 +150,7 @@ export default class PnPjsExampleViewModel {
                     ler.list.items.inBatch(batch).add(
                       {
                         Title: "Title 2",
-                        OrderNumber: "828475"
+                        Descripcion: "828475"
                       },
                       typeName
                     );
@@ -159,7 +158,7 @@ export default class PnPjsExampleViewModel {
                     ler.list.items.inBatch(batch).add(
                       {
                         Title: "Title 3",
-                        OrderNumber: "75638923"
+                        Descripcion: "75638923"
                       },
                       typeName
                     );
