@@ -24,7 +24,7 @@ export interface IPnPjsExampleBindingContext
 export interface OrderListItem {
   Id: number;
   Title: string;
-  OrderNumber: string;
+  Descripcion: string;
 }
 
 export default class PnPjsExampleViewModel {
@@ -83,9 +83,7 @@ export default class PnPjsExampleViewModel {
           .then((iar: ItemAddResult) => {
             // add the new item to the display
             this.items.push({
-              Id: iar.data.Id,
-              OrderNumber: iar.data.OrderNumber,
-              Title: iar.data.Title
+              Descripcion: iar.data.Descripcion,
             });
 
             // clear the form
@@ -149,7 +147,6 @@ export default class PnPjsExampleViewModel {
 
                     ler.list.items.inBatch(batch).add(
                       {
-                        Title: "Title 2",
                         Descripcion: "828475"
                       },
                       typeName
@@ -157,7 +154,6 @@ export default class PnPjsExampleViewModel {
 
                     ler.list.items.inBatch(batch).add(
                       {
-                        Title: "Title 3",
                         Descripcion: "75638923"
                       },
                       typeName
