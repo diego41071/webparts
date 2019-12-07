@@ -22,9 +22,8 @@ export interface IPnPjsExampleBindingContext
  * Interface which defines the fields in our list items
  */
 export interface OrderListItem {
-  Id: number;
   Title: string;
-  Descripcion: string;
+  Id: number;
 }
 
 export default class PnPjsExampleViewModel {
@@ -63,9 +62,7 @@ export default class PnPjsExampleViewModel {
   private getItems(): Promise<OrderListItem[]> {
     return this.ensureList().then(list => {
       // here we are using the getAs operator so that our returned value will be typed
-      return list.items
-        .select("Descripcion")
-        .get<OrderListItem[]>();
+      return list.items.select("Id", "Title").get<OrderListItem[]>();
     });
   }
 
@@ -73,22 +70,22 @@ export default class PnPjsExampleViewModel {
    * Adds an item to the list
    */
   public addItem(): void {
-    if (this.newItemTitle() !== "" && this.newItemNumber() !== "") {
+    if (this.newItemTitle() !== "") {
       this.ensureList().then(list => {
         // add the new item to the SharePoint list
         list.items
           .add({
-            Descripcion: this.newItemTitle()
-                    })
+            Title: this.newItemTitle()
+          })
           .then((iar: ItemAddResult) => {
             // add the new item to the display
             this.items.push({
-              Descripcion: iar.data.Descripcion,
+              Id: iar.data.Id,
+              Title: iar.data.Title
             });
 
             // clear the form
             this.newItemTitle("");
-            this.newItemNumber("");
           });
       });
     }
@@ -126,7 +123,7 @@ export default class PnPjsExampleViewModel {
           if (ler.created) {
             // we created the list on this call so let's add a column
             ler.list.fields
-              .addText("Descripcion")
+              .addText("Title")
               .then(_ => {
                 // and we will also add a few items so we can see some example data
                 // here we use batching
@@ -139,22 +136,21 @@ export default class PnPjsExampleViewModel {
                   .then(typeName => {
                     ler.list.items.inBatch(batch).add(
                       {
-                        
-                        Descripcion: "4826492"
+                        Title: "Title 1"
                       },
                       typeName
                     );
 
                     ler.list.items.inBatch(batch).add(
                       {
-                        Descripcion: "828475"
+                        Title: "Title 2"
                       },
                       typeName
                     );
 
                     ler.list.items.inBatch(batch).add(
                       {
-                        Descripcion: "75638923"
+                        Title: "Title 3"
                       },
                       typeName
                     );

@@ -1,4 +1,4 @@
-<div data-bind="attr: {class:spPnPjsExampleClass}">
+<div>
   <div data-bind="attr: {class:containerClass}">
     <div data-bind="attr: {class:rowClass}">
       <div class="ms-Grid-col ms-u-sm12">
@@ -19,17 +19,11 @@
 
     <!-- ko foreach: items -->
     <div data-bind="attr: {class:$parent.rowClass}">
-      <div class="ms-Grid-col ms-u-sm6">
-        <span
+      <div class="ms-Grid-col  ms-u-sm5">
+        <a href="https://conocimiento.sharepoint.com/sites/Pruebas/Lists/lista%20de%20servicios%201/AllItems.aspx"
           class="ms-font-l ms-fontColor-white"
           data-bind="text: Title"
-        ></span>
-      </div>
-      <div class="ms-Grid-col  ms-u-sm5">
-        <span
-          class="ms-font-l ms-fontColor-white"
-          data-bind="text: Descripcion"
-        ></span>
+        ></a>
       </div>
       <div class="ms-Grid-col  ms-u-sm1">
         <i
@@ -58,12 +52,11 @@
             data-bind='value: newItemTitle, valueUpdate: "afterkeydown"'
           />
         </div>
-
         <div class="ms-Grid-col ms-u-sm2">
           <button
             class="ms-Button--default ms-Button"
             type="submit"
-            data-bind="enable: newItemTitle().length > 0 && newItemNumber().length > 0"
+            data-bind="enable: newItemTitle().length > 0"
           >
             <span class="ms-Button-label">Add</span>
           </button>
