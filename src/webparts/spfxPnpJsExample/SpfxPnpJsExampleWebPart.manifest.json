@@ -14,14 +14,16 @@
   "requiresCustomScript": false,
   "supportedHosts": ["SharePointWebPart"],
 
-  "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
-    "group": { "default": "Other" },
-    "title": { "default": "spfx-pnp-js-example" },
-    "description": { "default": "spfx-pnp-js-example description" },
-    "officeFabricIconFontName": "Page",
-    "properties": {
-      "description": "spfx-pnp-js-example"
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+      "group": { "default": "Other" },
+      "title": { "default": "Catálogo de servicios" },
+      "description": { "default": "Catálogo de servicios" },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "Catálogo de servicios"
+      }
     }
-  }]
+  ]
 }

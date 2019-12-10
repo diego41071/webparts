@@ -23,7 +23,8 @@ export interface IPnPjsExampleBindingContext
  */
 export interface OrderListItem {
   Title: string;
-  Id: number;
+  Url: string;
+  Descripcion: string;
 }
 
 export default class PnPjsExampleViewModel {
@@ -62,34 +63,36 @@ export default class PnPjsExampleViewModel {
   private getItems(): Promise<OrderListItem[]> {
     return this.ensureList().then(list => {
       // here we are using the getAs operator so that our returned value will be typed
-      return list.items.select("Id", "Title").get<OrderListItem[]>();
+      return list.items
+        .select("Title", "OData__x0076_mo3", "OData__x0071_iy4")
+        .get<OrderListItem[]>();
     });
   }
 
   /**
    * Adds an item to the list
    */
-  public addItem(): void {
-    if (this.newItemTitle() !== "") {
-      this.ensureList().then(list => {
-        // add the new item to the SharePoint list
-        list.items
-          .add({
-            Title: this.newItemTitle()
-          })
-          .then((iar: ItemAddResult) => {
-            // add the new item to the display
-            this.items.push({
-              Id: iar.data.Id,
-              Title: iar.data.Title
-            });
+  // public addItem(): void {
+  //   if (this.newItemTitle() !== "") {
+  //     this.ensureList().then(list => {
+  //       // add the new item to the SharePoint list
+  //       list.items
+  //         .add({
+  //           Title: this.newItemTitle()
+  //         })
+  //         .then((iar: ItemAddResult) => {
+  //           // add the new item to the display
+  //           this.items.push({
+  //             Title: iar.data.Title,
+  //             _x0076_mo3: iar.data._x0076_mo3
+  //           });
 
-            // clear the form
-            this.newItemTitle("");
-          });
-      });
-    }
-  }
+  //           // clear the form
+  //           this.newItemTitle("");
+  //         });
+  //     });
+  //   }
+  // }
 
   /**
    * Deletes an item from the list
@@ -118,12 +121,13 @@ export default class PnPjsExampleViewModel {
     return new Promise<List>((resolve, reject) => {
       // use lists.ensure to always have the list available
       sp.web.lists
-        .ensure("PruebasCatalogo")
+        .ensure("CatalogodeServicio")
         .then((ler: ListEnsureResult) => {
           if (ler.created) {
             // we created the list on this call so let's add a column
             ler.list.fields
-              .addText("Title")
+
+              .addText("Title, Url, Descripcion")
               .then(_ => {
                 // and we will also add a few items so we can see some example data
                 // here we use batching
