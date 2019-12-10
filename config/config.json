@@ -2,30 +2,6 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
   "version": "2.0",
   "bundles": {
-    "hello-world-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/helloWorld/HelloWorldWebPart.js",
-          "manifest": "./src/webparts/helloWorld/HelloWorldWebPart.manifest.json"
-        }
-      ]
-    },
-    "webpart-2-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/webpart2/Webpart2WebPart.js",
-          "manifest": "./src/webparts/webpart2/Webpart2WebPart.manifest.json"
-        }
-      ]
-    },
-    "busqueda-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/busqueda/BusquedaWebPart.js",
-          "manifest": "./src/webparts/busqueda/BusquedaWebPart.manifest.json"
-        }
-      ]
-    },
     "spfx-pnp-js-example-web-part": {
       "components": [
         {
@@ -37,9 +13,6 @@
   },
   "externals": {},
   "localizedResources": {
-    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
-    "Webpart2WebPartStrings": "lib/webparts/webpart2/loc/{locale}.js",
-    "BusquedaWebPartStrings": "lib/webparts/busqueda/loc/{locale}.js",
     "SpfxPnpJsExampleWebPartStrings": "lib/webparts/spfxPnpJsExample/loc/{locale}.js"
   }
 }
